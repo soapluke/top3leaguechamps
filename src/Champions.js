@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Champion from './Champion';
 
 const Champions = (props) => {
-
-    useEffect(() => {
-        axios.get('./champs.json');
-    }, []);
 
     return (
         <div>
