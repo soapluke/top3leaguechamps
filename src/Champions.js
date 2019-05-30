@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import Champion from './Champion';
 
 const Champions = (props) => {
 
@@ -10,7 +11,7 @@ const Champions = (props) => {
     return (
         <div>
             {props.champs.map((champ, i) => {
-                return <p key={i}>{champ.championId}</p>
+                return <Champion key={i} champ={champ.championId} />
             })}
         </div>
     );
