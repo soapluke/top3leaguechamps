@@ -14,25 +14,7 @@ const championStyle = {
 }
     
 const masteryImg = (champLevel) => {
-
-    switch(champLevel) {
-        case 1:
-            return champMasteries[0];
-        case 2:
-            return champMasteries[1];
-        case 3:
-            return champMasteries[2];
-        case 4:
-            return champMasteries[3];
-        case 5:
-            return champMasteries[4];
-        case 6:
-            return champMasteries[5];
-        case 7:
-            return champMasteries[6];
-        default:
-          return null;
-      }
+    return champMasteries[champLevel - 1];
   }
 
 
