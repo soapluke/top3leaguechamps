@@ -11,14 +11,18 @@ const championsStyle = {
 const Champions = (props) => {
     return (
         <div style={championsStyle}>
-            {props.champs.map((champ, i) => {
+            {!props ? (
+                <p>Loading...</p>
+            ) : ( 
+                props.champs.map((champ, i) => {
                 return <Champion
                             key={i}
                             championId={champ.championId}
                             championMastery={champ.championLevel}
                             championPoints={champ.championPoints}
                         />
-            })}
+                }
+            ))}
         </div>
     );
 }

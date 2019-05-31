@@ -42,11 +42,10 @@ const Champion = (props) => {
 
     const mImg = masteryImg(props.championMastery)
 
-
     return (
         <div style={championStyle}>
             {champ === undefined ? (
-                    <p style={textStyle}>Loading.</p>
+                    <p style={textStyle}>Loading...</p>
                 ) : (
                     <div>
                         <p style={textStyle}>{champ[0].name + ', ' + champ[0].title}</p>
@@ -55,7 +54,8 @@ const Champion = (props) => {
                         <p style={textStyle}>{champ[0].tags.join(', ')}</p>
                         <p style={textStyle}>{champ[0].description.split('.')[0] + '.'}</p>
 
-                    
+                        <p style={textStyle}>Mastery level: {props.championMastery}</p>
+                        <p style={textStyle}>Mastery points: {props.championPoints}</p>
 
 
 

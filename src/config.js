@@ -1,3 +1,3 @@
 export const cors = 'https://cors-anywhere.herokuapp.com/';
 
-export const key = 'RGAPI-c4997a97-d118-464c-be45-b587872921f5';
+export const key = 'RGAPI-01f4a27b-dd8f-4ee8-ab38-5b4e69365845';

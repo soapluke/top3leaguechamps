@@ -16,18 +16,33 @@ const searchbar = {
     borderRadius: '0.15rem',
 }
 
+const textStyle = {
+    color: 'white'
+}
+
 const Search = () => {
 
     const [champs, setChamps] = useState(undefined);
     const [summonerQuery, setSummonerQuery] = useState('');
     const [server, setServer] = useState('na1');
+    const [error, setError] = useState('');
 
     const onSearch = async () => {
-        const summoner = await axios.get(`${cors}https://${server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerQuery}?api_key=${key}`)
-        const id = await summoner.data.id;
-        const champs = await axios.get(`${cors}https://${server}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${key}`)
-        const data = await champs.data;
-        setChamps(data.splice(0, 3));
+        await axios.get(`${cors}https://${server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerQuery}?api_key=${key}`)
+            .then(async response => {
+                    const id = await response.data.id;
+                    const champs = await axios.get(`${cors}https://${server}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${key}`)
+                    const data = await champs.data;
+                    setChamps(data.splice(0, 3));
+                    setError('');
+            })
+            .catch(() => {
+                setError('No summoner found with that name.')
+            })
+
+        
+        
+        
     }
 
     return (
@@ -46,7 +61,8 @@ const Search = () => {
                 </button>
                 
             </div>
-        {champs && <Champions champs={champs}/>}
+        <p style={textStyle}>{error}</p>
+        {champs && !error ? <Champions champs={champs}/> : null}
         </div>
     );
 }

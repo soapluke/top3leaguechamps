@@ -14,7 +14,7 @@ const useFetchChamps = (url, championId) => {
   useEffect(() => {
     axios.get(url)
       aFetchChamps();
-  }, [champ]);
+  }, [championId]);
 
   return champ;
 }
