@@ -20,25 +20,20 @@ const Search = () => {
 
     const [champs, setChamps] = useState(undefined);
     const [summonerQuery, setSummonerQuery] = useState('');
-    const [server, setServer] = useState('');
+    const [server, setServer] = useState('na1');
 
     const onSearch = async () => {
         const summoner = await axios.get(`${cors}https://${server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerQuery}?api_key=${key}`)
         const id = await summoner.data.id;
         const champs = await axios.get(`${cors}https://${server}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${key}`)
         const data = await champs.data;
-        setChamps(data.splice(0, 3))
+        setChamps(data.splice(0, 3));
     }
-
-    
-
-
-
-
 
     return (
         <div>
             <div style={searchbarContainer}>
+                
                 <select style={searchbar} onChange={e => setServer(e.target.value)}>
                     <option value="na1">NA</option>
                     <option value="euw1">EUW</option>

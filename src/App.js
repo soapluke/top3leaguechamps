@@ -2,12 +2,13 @@ import React from 'react';
 import Search from './Search';
 
 const divStyle = {
-  textAlign: 'center'
+  textAlign: 'center',
+  backgroundColor: '#304f82',
+  minHeight: '100vh'
 }
 
 const headerStyle = {
-  backgroundColor: '#304f82',
-  minHeight: '100vh'
+  
 }
 
 const App = () => {
