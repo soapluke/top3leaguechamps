@@ -14,9 +14,9 @@ const Champions = (props) => {
             {!props ? (
                 <p>Loading...</p>
             ) : ( 
-                props.champs.map((champ, i) => {
+                props.champs.map((champ) => {
                 return <Champion
-                            key={i}
+                            key={champ.championId}
                             championId={champ.championId}
                             championMastery={champ.championLevel}
                             championPoints={champ.championPoints}

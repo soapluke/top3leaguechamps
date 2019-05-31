@@ -15,7 +15,7 @@ const championStyle = {
     
 const masteryImg = (champLevel) => {
     return champMasteries[champLevel - 1];
-  }
+}
 
 
 const Champion = (props) => {

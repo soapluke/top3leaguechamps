@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Champions from './Champions';
-import { cors, key } from './config';
 import axios from 'axios';
+
+
 
 const searchbarContainer = {
     display: 'flex',
@@ -28,10 +29,10 @@ const Search = () => {
     const [error, setError] = useState('');
 
     const onSearch = async () => {
-        await axios.get(`${cors}https://${server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerQuery}?api_key=${key}`)
+        await axios.get(`${process.env.REACT_APP_CORS}https://${server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerQuery}?api_key=${process.env.REACT_APP_KEY}`)
             .then(async response => {
                     const id = await response.data.id;
-                    const champs = await axios.get(`${cors}https://${server}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${key}`)
+                    const champs = await axios.get(`${process.env.REACT_APP_CORS}https://${server}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${process.env.REACT_APP_KEY}`)
                     const data = await champs.data;
                     setChamps(data.splice(0, 3));
                     setError('');
